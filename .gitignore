@@ -1,0 +1,16 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+build/
+.DS_Store
+
+# Python
+backend/venv/
+backend/__pycache__/
+*.pyc
+*.pyo
+
+# Environment Variables
+backend/.env
+.env
