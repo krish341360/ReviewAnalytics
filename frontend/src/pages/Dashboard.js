@@ -22,6 +22,8 @@ export default function Dashboard() {
     const [loading, setLoading] = useState(false);
     const [error, setError]     = useState(null);
 
+    const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
     // Single-product state
     const [singleData, setSingleData] = useState([]);
 
@@ -32,7 +34,7 @@ export default function Dashboard() {
     const handleAnalyze = async (urls) => {
         setLoading(true); setError(null); setSingleData([]);
         try {
-            const res  = await fetch("http://localhost:5000/analyze", {
+            const res  = await fetch(`${API_BASE_URL}/analyze`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ urls }),
@@ -47,7 +49,7 @@ export default function Dashboard() {
     const handleCompare = async ({ your_url, competitor_urls }) => {
         setLoading(true); setError(null); setCompareData(null);
         try {
-            const res = await fetch("http://localhost:5000/compare", {
+            const res = await fetch(`${API_BASE_URL}/compare`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ your_url, competitor_urls }),
