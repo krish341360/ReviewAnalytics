@@ -10,8 +10,13 @@ from services.nlp import analyze_reviews
 compare_bp = Blueprint("compare", __name__)
 
 
-@compare_bp.route("/compare", methods=["POST"])
+from flask_cors import cross_origin
+
+@compare_bp.route("/compare", methods=["POST", "OPTIONS"])
+@cross_origin()
 def compare():
+    if request.method == "OPTIONS":
+        return jsonify({}), 200
     """
     POST body:
     {
