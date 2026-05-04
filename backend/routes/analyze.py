@@ -8,13 +8,8 @@ analyze_bp = Blueprint("analyze", __name__)
 
 # routes/analyze.py
 
-from flask_cors import cross_origin
-
-@analyze_bp.route("/analyze", methods=["POST", "OPTIONS"])
-@cross_origin()
+@analyze_bp.route("/analyze", methods=["POST"], strict_slashes=False)
 def analyze():
-    if request.method == "OPTIONS":
-        return jsonify({}), 200
     data = request.json
     urls = data.get("urls")
 
